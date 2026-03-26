@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Space+Mono&display=swap" rel="stylesheet">
+    <title>{{ title }} | Марс миссия</title>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="mars-bg"></div>
+    <div class="meteor-shower"></div>
+
+    <header class="cosmic-header">
+        <div class="header-content">
+            <h1 class="glitch" data-text="Миссия Колонизация Марса">Миссия Колонизация Марса</h1>
+            <h4 class="subtitle">🌌 "И на Марсе будут яблони цвести!" 🌌</h4>
+            <div class="mars-rover"></div>
+        </div>
+    </header>
+
+    <nav class="space-nav">
+        <ul>
+            <li><a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">
+                <span class="nav-icon">🚀</span> Главная
+            </a></li>
+            <li><a href="/memes" class="nav-link {% if request.path == '/memes' %}active{% endif %}">
+                <span class="nav-icon">😆</span> Мемы
+            </a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="space-footer">
+        <div class="footer-content">
+            <p>🌠 Сделано с любовью к Марсу и мемам 🌠</p>
+            <p class="small">Кстати, гравитация на Марсе всего 38% от земной — так что прыгайте выше!</p>
+            <div class="footer-links">
+                <a href="/login" class="footer-link">🔑 Вход</a>
+                <span class="footer-separator">|</span>
+                <a href="/register" class="footer-link">📝 Регистрация</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

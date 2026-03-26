@@ -1,0 +1,345 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="mars-card meme-welcome">
+    <h2 style="color: #FF5722; margin-bottom: 20px; font-size: 2.5em;">🔥 ГАЛАКТИЧЕСКИЙ МЕМОПАД 🔥</h2>
+    <p style="color: #FFB74D; font-size: 1.3em; margin-bottom: 30px;">Самые смешные мемы про колонизацию Марса, Илона Маска и марсиан!</p>
+
+    <!-- Счетчик мемов и лайков -->
+    <div class="meme-stats" style="display: flex; justify-content: space-around; margin-top: 20px; flex-wrap: wrap;">
+        <div class="stat-item" style="text-align: center;">
+            <span style="font-size: 2em;">📸</span>
+            <h3 style="color: #fff;">24</h3>
+            <p style="color: #aaa;">Мемов</p>
+        </div>
+        <div class="stat-item" style="text-align: center;">
+            <span style="font-size: 2em;">❤️</span>
+            <h3 style="color: #fff;">12.5K</h3>
+            <p style="color: #aaa;">Лайков</p>
+        </div>
+        <div class="stat-item" style="text-align: center;">
+            <span style="font-size: 2em;">👽</span>
+            <h3 style="color: #fff;">4</h3>
+            <p style="color: #aaa;">Марсианина одобрили</p>
+        </div>
+    </div>
+</div>
+
+<!-- Категории мемов -->
+<div class="meme-categories" style="display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center;">
+    <button class="category-btn active" style="background: #FF5722; color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer;">🔥 Все мемы</button>
+    <button class="category-btn" style="background: rgba(255,87,34,0.3); color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer;">🚀 Илон Маск</button>
+    <button class="category-btn" style="background: rgba(255,87,34,0.3); color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer;">👽 Марсиане</button>
+    <button class="category-btn" style="background: rgba(255,87,34,0.3); color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer;">🌡️ Погода</button>
+    <button class="category-btn" style="background: rgba(255,87,34,0.3); color: white; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer;">💫 Космос</button>
+</div>
+
+<!-- ОСНОВНАЯ СЕТКА МЕМОВ -->
+<div class="meme-grid">
+    <!-- МЕМ 1: Илон Маск и билеты -->
+    <div class="meme-item" data-category="elon">
+        <div class="meme-badge">🔥 ХИТ</div>
+        <img src="https://memchik.ru/data/memes/2c7f7a1e1c.jpg" alt="Илон Маск билеты" onerror="this.src='https://via.placeholder.com/400x250/FF5722/FFFFFF?text=🚀+Илон+Маск'">
+        <div class="meme-caption">
+            <strong>🚀 Илон Маск, когда узнал, что билет на Марс стоит как 3 квартиры в Москве</strong>
+            <div class="meme-actions" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span>❤️ 2.3K</span>
+                <span>💬 128</span>
+                <span>🔄 45</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- МЕМ 2: Марсиане и люди -->
+    <div class="meme-item" data-category="martian">
+        <div class="meme-badge">👽 ЛУЧШЕЕ</div>
+        <img src="https://memchik.ru/data/memes/3f8b9c2d3e.jpg" alt="Марсиане" onerror="this.src='https://via.placeholder.com/400x250/8B3A0B/FFFFFF?text=👽+Марсиане'">
+        <div class="meme-caption">
+            <strong>Марсиане: *живут спокойно 1 млрд лет*<br>Люди: "А давайте к вам прилетим!"</strong>
+            <div class="meme-actions" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span>❤️ 3.1K</span>
+                <span>💬 256</span>
+                <span>🔄 89</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- МЕМ 3: Погода на Марсе -->
+    <div class="meme-item" data-category="weather">
+        <div class="meme-badge">🌡️ АКТУАЛЬНО</div>
+        <img src="https://memchik.ru/data/memes/4d9e8f7a6b.jpg" alt="Погода на Марсе" onerror="this.src='https://via.placeholder.com/400x250/2C3E50/FFFFFF?text=🌪️+Пылевая+буря'">
+        <div class="meme-caption">
+            <strong>Погода на Марсе сегодня:<br>🌪️ Пылевая буря уровня "Борис"<br>🌡️ -63°C, ощущается как -100°C</strong>
+            <div class="meme-actions" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span>❤️ 1.8K</span>
+                <span>💬 92</span>
+                <span>🔄 34</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- МЕМ 4: Марсианская еда -->
+    <div class="meme-item" data-category="martian">
+        <div class="meme-badge">🍔 ЕДА</div>
+        <img src="https://memchik.ru/data/memes/5c6d7e8f9g.jpg" alt="Марсианская еда" onerror="this.src='https://via.placeholder.com/400x250/795548/FFFFFF?text=🍔+Марсианская+еда'">
+        <div class="meme-caption">
+            <strong>Когда на Марсе закончилась земная еда и пришлось есть марсианские сухарики</strong>
+            <div class="meme-actions" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span>❤️ 4.2K</span>
+                <span>💬 315</span>
+                <span>🔄 167</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- МЕМ 5: SpaceX испытания -->
+    <div class="meme-item" data-category="elon">
+        <div class="meme-badge">🚀 ВЗРЫВООПАСНО</div>
+        <img src="https://memchik.ru/data/memes/6a7b8c9d0e.jpg" alt="SpaceX" onerror="this.src='https://via.placeholder.com/400x250/FF6B6B/FFFFFF?text=💥+SpaceX'">
+        <div class="meme-caption">
+            <strong>SpaceX: *испытывает Starship*<br>Жители Техаса: "О, опять НЛО взорвалось"</strong>
+            <div class="meme-actions" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span>❤️ 5.7K</span>
+                <span>💬 423</span>
+                <span>🔄 289</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- МЕМ 6: Гравитация -->
+    <div class="meme-item" data-category="space">
+        <div class="meme-badge">🏋️ ФИЗИКА</div>
+        <img src="https://memchik.ru/data/memes/7b8c9d0e1f.jpg" alt="Гравитация" onerror="this.src='https://via.placeholder.com/400x250/9B59B6/FFFFFF?text=🏋️+Гравитация'">
+        <div class="meme-caption">
+            <strong>Я на Земле: еле тащу сумку из магазина<br>Я на Марсе: *поднимаю машину одной рукой*</strong>
+            <div class="meme-actions" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span>❤️ 3.4K</span>
+                <span>💬 178</span>
+                <span>🔄 56</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- МЕМ 7: Марсианский интернет -->
+    <div class="meme-item" data-category="space">
+        <div class="meme-badge">📶 НОВИНКА</div>
+        <img src="https://memchik.ru/data/memes/8c9d0e1f2g.jpg" alt="Марсианский интернет" onerror="this.src='https://via.placeholder.com/400x250/3498DB/FFFFFF?text=📶+Медленный+интернет'">
+        <div class="meme-caption">
+            <strong>Марсианский интернет:<br>Пинг до Земли: от 3 до 20 минут<br>Загрузить мем: 2 часа</strong>
+            <div class="meme-actions" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span>❤️ 2.9K</span>
+                <span>💬 145</span>
+                <span>🔄 67</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- МЕМ 8: Первое слово на Марсе -->
+    <div class="meme-item" data-category="elon">
+        <div class="meme-badge">🎙️ ИСТОРИЯ</div>
+        <img src="https://memchik.ru/data/memes/9d0e1f2g3h.jpg" alt="Первое слово" onerror="this.src='https://via.placeholder.com/400x250/E67E22/FFFFFF?text=🎙️+Первое+слово'">
+        <div class="meme-caption">
+            <strong>Первое слово, сказанное на Марсе:<br>"Блин, я дома забыл выключить утюг"</strong>
+            <div class="meme-actions" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <span>❤️ 6.2K</span>
+                <span>💬 512</span>
+                <span>🔄 234</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Альтернативный вариант с локальными картинками -->
+<div class="mars-card" style="margin-top: 40px; background: rgba(255,87,34,0.2);">
+    <h3 style="color: #FF5722; margin-bottom: 20px;">🖼️ ГАЛЕРЕЯ МАРСИАНСКОГО ЮМОРА</h3>
+    <p>Если мемы не загружаются, вот текстовые версии:</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+            <div style="font-size: 3em; text-align: center;">🚀</div>
+            <p style="text-align: center;"><strong>Илон Маск:</strong> "Я продам все акции Tesla и куплю Марс!"</p>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+            <div style="font-size: 3em; text-align: center;">👽</div>
+            <p style="text-align: center;"><strong>Марсианин:</strong> "О, опять эти люди со своими селфи..."</p>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+            <div style="font-size: 3em; text-align: center;">🌡️</div>
+            <p style="text-align: center;"><strong>Погода:</strong> "На Марсе сегодня теплее, чем в вашем сердце"</p>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.3); padding: 15px; border-radius: 10px;">
+            <div style="font-size: 3em; text-align: center;">🍎</div>
+            <p style="text-align: center;"><strong>Яблони:</strong> "Мы пытаемся цвести, но холодно!"</p>
+        </div>
+    </div>
+</div>
+
+<!-- БЛОК С АНЕКДОТАМИ -->
+<div class="mars-card">
+    <h3 style="color: #FF5722; font-size: 2em; margin-bottom: 30px;">📢 МАРСИАНСКИЙ СТЕНДАП</h3>
+
+    <div class="jokes-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        <div class="joke-item" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+            <p>😆 <strong>— Почему марсиане не играют в футбол?</strong></p>
+            <p>— Потому что поле слишком большое, а мяч улетает в космос из-за низкой гравитации!</p>
+        </div>
+
+        <div class="joke-item" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+            <p>😆 <strong>— Что сказал марсианин, когда увидел первого человека?</strong></p>
+            <p>— "О, доставка пиццы приехала!"</p>
+        </div>
+
+        <div class="joke-item" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+            <p>😆 <strong>— Как марсиане вызывают такси?</strong></p>
+            <p>— Свистят в атмосферу — звук же не передается, но красиво!</p>
+        </div>
+
+        <div class="joke-item" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+            <p>😆 <strong>— Сколько стоит билет на Марс в один конец?</strong></p>
+            <p>— Бесплатно, если возьмешь с собой Илона Маска!</p>
+        </div>
+    </div>
+</div>
+
+<!-- КОММЕНТАРИИ -->
+<div class="mars-card">
+    <h3 style="color: #FFB74D; margin-bottom: 20px;">💬 КОММЕНТАРИИ МАРСОНАВТОВ:</h3>
+
+    <div class="comment" style="display: flex; gap: 15px; margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 10px;">
+        <div style="font-size: 2em;">👨‍🚀</div>
+        <div>
+            <strong style="color: #FF5722;">@elon_need_money</strong>
+            <p>Ребята, кто хочет скинуться на билет? У меня только на кофе с Марса осталось...</p>
+            <div style="color: #aaa; font-size: 0.9em;">5 минут назад • ❤️ 45</div>
+        </div>
+    </div>
+
+    <div class="comment" style="display: flex; gap: 15px; margin-bottom: 20px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 10px;">
+        <div style="font-size: 2em;">👩‍🚀</div>
+        <div>
+            <strong style="color: #FF5722;">@martian_girl_69</strong>
+            <p>Живу на Марсе 100500 лет. Вопросы?</p>
+            <div style="color: #aaa; font-size: 0.9em;">1 час назад • ❤️ 128</div>
+        </div>
+    </div>
+</div>
+
+<!-- Марсианский опрос -->
+<div class="mars-card" style="text-align: center;">
+    <h3 style="color: #FF5722;">📊 ОПРОС: ТЫ ПОЛЕТИШЬ НА МАРС?</h3>
+    <div style="display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap;">
+        <button style="background: #4CAF50; color: white; border: none; padding: 15px 30px; border-radius: 50px; cursor: pointer;">🚀 ДА, ЧЕ ТАМ ДЕЛАТЬ</button>
+        <button style="background: #f44336; color: white; border: none; padding: 15px 30px; border-radius: 50px; cursor: pointer;">🌍 НЕТ, И НА ЗЕМЛЕ НОРМ</button>
+        <button style="background: #FF9800; color: white; border: none; padding: 15px 30px; border-radius: 50px; cursor: pointer;">👽 ТОЛЬКО ЕСЛИ С МЕМАМИ</button>
+    </div>
+    <p style="color: #aaa;">Результаты: 69% летят, 31% боятся марсиан</p>
+</div>
+
+<!-- Добавим CSS -->
+<style>
+    .meme-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+    }
+
+    .meme-item {
+        position: relative;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        border: 1px solid rgba(255, 87, 34, 0.3);
+        backdrop-filter: blur(5px);
+    }
+
+    .meme-item:hover {
+        transform: translateY(-15px) scale(1.02);
+        border-color: #FF5722;
+        box-shadow: 0 20px 40px rgba(255, 87, 34, 0.4);
+    }
+
+    .meme-badge {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: #FF5722;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 30px;
+        font-size: 0.9em;
+        font-weight: bold;
+        z-index: 2;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .meme-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-bottom: 3px solid #FF5722;
+        transition: transform 0.4s;
+        background: linear-gradient(45deg, #2C3E50, #34495E);
+    }
+
+    .meme-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .meme-caption {
+        padding: 20px;
+        text-align: center;
+        font-size: 1.1em;
+        color: #FFB74D;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    }
+
+    .meme-actions {
+        font-size: 0.9em;
+        color: #aaa;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 10px;
+    }
+
+    .joke-item {
+        transition: all 0.3s;
+        cursor: pointer;
+    }
+
+    .joke-item:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 87, 34, 0.2) !important;
+    }
+
+    @media (max-width: 768px) {
+        .meme-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<!-- Скрипт для обработки ошибок загрузки изображений -->
+<script>
+    // Дополнительная обработка ошибок загрузки изображений
+    document.querySelectorAll('img').forEach(img => {
+        img.onerror = function() {
+            this.onerror = null; // Предотвращаем бесконечный цикл
+            this.src = 'https://via.placeholder.com/400x250/FF5722/FFFFFF?text=' +
+                      encodeURIComponent(this.alt || 'Марс мем');
+        };
+    });
+
+    // Кнопка загрузки еще мемов
+    document.querySelector('.load-more')?.addEventListener('click', function() {
+        this.textContent = '🚀 ЗАГРУЗКА... 🚀';
+        setTimeout(() => {
+            alert('Мемы закончились... Прилетайте завтра! Новые мемы с Марса доставят с следующей ракетой!');
+            this.textContent = '🚀 ЗАГРУЗИТЬ ЕЩЕ МЕМЫ 🚀';
+        }, 1500);
+    });
+</script>
+{% endblock %}

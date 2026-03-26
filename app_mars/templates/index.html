@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<meta charset="utf-8">
+
+<div class="page-header">
+    <h2 class="glitch" data-text="ЛОГИ ВЫПОЛНЕНИЯ РАБОТ">🚀 ЛОГИ ВЫПОЛНЕНИЯ РАБОТ</h2>
+
+    <!-- Кнопки действий -->
+    <div class="action-buttons">
+        <a href="/login" class="btn cosmic-btn login-btn">
+            <span class="btn-icon">🔑</span>
+            Вход в систему
+        </a>
+        <a href="/register" class="btn cosmic-btn register-btn">
+            <span class="btn-icon">📝</span>
+            Подать заявку
+            <span class="btn-icon">🌌</span>
+        </a>
+    </div>
+</div>
+
+{% for job in jobs %}
+<div class="job-card" data-job-id="{{ job.id }}">
+    <h3 class="job-title">
+        <span class="mission-badge">#{{ job.id }}</span>
+        Миссия: {{ job.job }}
+        <span class="job-status-indicator" data-finished="{{ job.is_finished|lower }}"></span>
+    </h3>
+
+    <div class="table_container">
+        <table class="job_table">
+            <thead>
+                <tr class="row header-row">
+                    <th class="title">Название задания</th>
+                    <th class="title">Руководитель</th>
+                    <th class="title">Длительность (часы)</th>
+                    <th class="title">Участники</th>
+                    <th class="title">Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row data-row">
+                    <td class="value">{{ job.job }}</td>
+                    <td class="value leader-name">
+                        <span class="leader-icon">👨‍🚀</span>
+                        {{ names[job.team_leader][0] }} {{ names[job.team_leader][1] }}
+                    </td>
+                    <td class="value duration">
+                        <span class="duration-icon">⏱️</span>
+                        {{ job.work_size }}ч
+                    </td>
+                    <td class="value collaborators">
+                        {% if job.collaborators %}
+                            {% for collab in job.collaborators.split(',') %}
+                                <span class="collab-badge">{{ collab.strip() }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <span class="no-collab">Нет участников</span>
+                        {% endif %}
+                    </td>
+                    <td class="value status">
+                        {% if job.is_finished %}
+                            <span class="status-badge finished">✅ Завершено</span>
+                        {% else %}
+                            <span class="status-badge in-progress">🔄 В процессе</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Прогресс бар миссии -->
+    {% if not job.is_finished %}
+    <div class="mission-progress">
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: {{ job.progress|default(0) }}%"></div>
+        </div>
+        <span class="progress-text">{{ job.progress|default(0) }}% завершено</span>
+    </div>
+    {% endif %}
+</div>
+{% else %}
+<div class="no-jobs">
+    <div class="mars-icon">🪐</div>
+    <h3>Пока нет активных миссий</h3>
+    <p>Станьте первым колонизатором!</p>
+    <a href="/register" class="btn cosmic-btn">Подать заявку</a>
+</div>
+{% endfor %}
+
+<!-- Дополнительная информация -->
+<div class="mission-info">
+    <div class="info-card">
+        <span class="info-icon">📊</span>
+        <div class="info-content">
+            <h4>Всего миссий: {{ jobs|length }}</h4>
+            <p>Завершено: {{ jobs|selectattr('is_finished', 'equalto', True)|list|length }}</p>
+        </div>
+    </div>
+    <div class="info-card">
+        <span class="info-icon">👥</span>
+        <div class="info-content">
+            <h4>Активных колонизаторов: {{ names|length }}</h4>
+            <p>Готовы к работе</p>
+        </div>
+    </div>
+    <div class="info-card">
+        <span class="info-icon">⏳</span>
+        <div class="info-content">
+            <h4>Общее время: {{ jobs|sum(attribute='work_size') }}ч</h4>
+            <p>Человеко-часов</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

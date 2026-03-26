@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card cosmic-card register-card">
+        <div class="auth-header">
+            <h2 class="section-title glitch" data-text="Регистрация">📝 РЕГИСТРАЦИЯ</h2>
+            <div class="mars-divider">
+                <span class="planet-icon">🚀</span>
+                <span class="line"></span>
+                <span class="planet-icon">👨‍🚀</span>
+            </div>
+            <p class="auth-subtitle">Станьте частью миссии по колонизации Марса</p>
+        </div>
+
+        <form action="" method="post" class="cosmic-form register-form">
+            {{ form.hidden_tag() }}
+
+            <!-- Email -->
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                <div class="input-wrapper">
+                    <span class="input-icon">📧</span>
+                    {{ form.email(class="form-control cosmic-input", type="email", placeholder="example@mars.colony") }}
+                </div>
+                {% for error in form.email.errors %}
+                    <div class="alert alert-danger cosmic-alert" role="alert">
+                        <span class="alert-icon">⚠️</span>
+                        {{ error }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Пароль -->
+            <div class="form-row">
+                <div class="form-group half">
+                    {{ form.password.label(class="form-label") }}
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        {{ form.password(class="form-control cosmic-input", type="password", placeholder="Введите пароль") }}
+                    </div>
+                    {% for error in form.password.errors %}
+                        <div class="alert alert-danger cosmic-alert" role="alert">
+                            <span class="alert-icon">⚠️</span>
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group half">
+                    {{ form.password_again.label(class="form-label") }}
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔐</span>
+                        {{ form.password_again(class="form-control cosmic-input", type="password", placeholder="Повторите пароль") }}
+                    </div>
+                    {% for error in form.password_again.errors %}
+                        <div class="alert alert-danger cosmic-alert" role="alert">
+                            <span class="alert-icon">⚠️</span>
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Личная информация -->
+            <div class="form-section">
+                <h3 class="form-section-title">
+                    <span class="section-icon">👤</span>
+                    Личная информация
+                </h3>
+                
+                <div class="form-row">
+                    <div class="form-group half">
+                        {{ form.surname.label(class="form-label") }}
+                        <div class="input-wrapper">
+                            <span class="input-icon">👨</span>
+                            {{ form.surname(class="form-control cosmic-input", placeholder="Иванов") }}
+                        </div>
+                        {% for error in form.surname.errors %}
+                            <div class="alert alert-danger cosmic-alert">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="form-group half">
+                        {{ form.name.label(class="form-label") }}
+                        <div class="input-wrapper">
+                            <span class="input-icon">👤</span>
+                            {{ form.name(class="form-control cosmic-input", placeholder="Иван") }}
+                        </div>
+                        {% for error in form.name.errors %}
+                            <div class="alert alert-danger cosmic-alert">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form.age.label(class="form-label") }}
+                    <div class="input-wrapper">
+                        <span class="input-icon">🎂</span>
+                        {{ form.age(class="form-control cosmic-input", type="number", placeholder="25", min="18", max="100") }}
+                    </div>
+                    {% for error in form.age.errors %}
+                        <div class="alert alert-danger cosmic-alert">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Профессиональная информация -->
+            <div class="form-section">
+                <h3 class="form-section-title">
+                    <span class="section-icon">🔬</span>
+                    Профессиональная информация
+                </h3>
+
+                <div class="form-group">
+                    {{ form.position.label(class="form-label") }}
+                    <div class="input-wrapper">
+                        <span class="input-icon">📋</span>
+                        {{ form.position(class="form-control cosmic-input", placeholder="Инженер") }}
+                    </div>
+                    {% for error in form.position.errors %}
+                        <div class="alert alert-danger cosmic-alert">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.speciality.label(class="form-label") }}
+                    <div class="input-wrapper">
+                        <span class="input-icon">⚙️</span>
+                        {{ form.speciality(class="form-control cosmic-input", placeholder="Аэрокосмическая инженерия") }}
+                    </div>
+                    {% for error in form.speciality.errors %}
+                        <div class="alert alert-danger cosmic-alert">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Адрес -->
+            <div class="form-section">
+                <h3 class="form-section-title">
+                    <span class="section-icon">📍</span>
+                    Контактная информация
+                </h3>
+
+                <div class="form-group">
+                    {{ form.address.label(class="form-label") }}
+                    <div class="input-wrapper">
+                        <span class="input-icon">🏠</span>
+                        {{ form.address(class="form-control cosmic-input", placeholder="Земля, ул. Космическая, д. 1") }}
+                    </div>
+                    {% for error in form.address.errors %}
+                        <div class="alert alert-danger cosmic-alert">{{ error }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Согласие -->
+            <div class="form-group terms-group">
+                <label class="cosmic-checkbox">
+                    <input type="checkbox" required>
+                    <span class="checkmark"></span>
+                    <span class="checkbox-text">
+                        Я согласен стать частью миссии и готов к межпланетным перелетам 🌌
+                    </span>
+                </label>
+            </div>
+
+            <!-- Кнопка отправки -->
+            <div class="form-actions">
+                {{ form.submit(class="btn cosmic-btn register-submit") }}
+            </div>
+
+            <!-- Сообщение об ошибке/успехе -->
+            {% if message %}
+            <div class="cosmic-message {{ 'success' if 'успешно' in message.lower() else 'error' }}">
+                <div class="message-icon">{{ '✅' if 'успешно' in message.lower() else '❌' }}</div>
+                <div class="message-text">{{ message }}</div>
+            </div>
+            {% endif %}
+        </form>
+
+        <div class="auth-footer">
+            <p>Уже зарегистрированы? <a href="/login">Войти в систему</a></p>
+            <div class="mars-rover-small"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Индикатор сложности пароля (дополнительная фича) -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput = document.querySelector('input[name="password"]');
+    const passwordAgainInput = document.querySelector('input[name="password_again"]');
+    
+    if (passwordInput) {
+        const strengthIndicator = document.createElement('div');
+        strengthIndicator.className = 'password-strength';
+        passwordInput.parentNode.appendChild(strengthIndicator);
+        
+        passwordInput.addEventListener('input', function() {
+            const strength = calculatePasswordStrength(this.value);
+            updatePasswordStrength(strengthIndicator, strength);
+        });
+    }
+    
+    if (passwordInput && passwordAgainInput) {
+        passwordAgainInput.addEventListener('input', function() {
+            if (passwordInput.value && passwordAgainInput.value) {
+                if (passwordInput.value === passwordAgainInput.value) {
+                    passwordAgainInput.style.borderColor = '#4CAF50';
+                } else {
+                    passwordAgainInput.style.borderColor = '#ff4444';
+                }
+            }
+        });
+    }
+});
+
+function calculatePasswordStrength(password) {
+    let strength = 0;
+    
+    if (password.length >= 8) strength += 25;
+    if (password.length >= 12) strength += 15;
+    if (/[A-Z]/.test(password)) strength += 20;
+    if (/[a-z]/.test(password)) strength += 20;
+    if (/[0-9]/.test(password)) strength += 20;
+    if (/[^A-Za-z0-9]/.test(password)) strength += 20;
+    
+    return Math.min(100, strength);
+}
+
+function updatePasswordStrength(element, strength) {
+    element.innerHTML = `
+        <div class="strength-bar">
+            <div class="strength-fill" style="width: ${strength}%"></div>
+        </div>
+        <span class="strength-text">${getStrengthText(strength)}</span>
+    `;
+    
+    element.style.display = 'block';
+}
+
+function getStrengthText(strength) {
+    if (strength < 30) return 'Слабый';
+    if (strength < 60) return 'Средний';
+    if (strength < 80) return 'Хороший';
+    return 'Отличный';
+}
+</script>
+{% endblock %}

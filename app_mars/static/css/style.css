@@ -1,0 +1,1241 @@
+/* Основные стили и переменные */
+:root {
+    --primary-color: #ff6b35;
+    --primary-dark: #ff3d00;
+    --secondary-color: #4a90e2;
+    --dark-bg: #0a0f1e;
+    --darker-bg: #05080f;
+    --text-light: #ffffff;
+    --text-gray: #8a9bb5;
+    --text-dark: #e0e0e0;
+    --glass-bg: rgba(10, 20, 40, 0.85);
+    --border-glow: rgba(255, 107, 53, 0.3);
+    --shadow-color: rgba(255, 107, 53, 0.5);
+    --success-color: #4CAF50;
+    --success-dark: #45a049;
+    --warning-color: #ffc107;
+    --danger-color: #ff4444;
+}
+
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    color: var(--text-light);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Звездный фон */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: fixed;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    animation: twinkle var(--duration) ease-in-out infinite;
+}
+
+.mars-bg {
+    position: fixed;
+    bottom: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle at 30% 30%, #ff6b35, #8b4513);
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    z-index: 0;
+    animation: float 20s ease-in-out infinite;
+}
+
+.meteor-shower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.meteor {
+    position: fixed;
+    background: linear-gradient(45deg, #ff6b35, #ffd700);
+    border-radius: 50% 0 0 50%;
+    filter: blur(2px);
+    box-shadow: 0 0 20px #ff6b35;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+/* Шапка */
+.cosmic-header {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--primary-color);
+    padding: 2rem 0;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    position: relative;
+}
+
+.glitch {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text-light);
+    text-shadow:
+        3px 3px 0 var(--primary-color),
+        -3px -3px 0 var(--secondary-color);
+    animation: glitch 3s infinite;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.mars-rover {
+    width: 100px;
+    height: 60px;
+    margin: 1rem auto;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100"><circle cx="40" cy="60" r="20" fill="%23ff6b35"/><circle cx="80" cy="60" r="20" fill="%23ff6b35"/><rect x="100" y="40" width="60" height="40" fill="%23ff6b35" rx="10"/><circle cx="130" cy="80" r="10" fill="%23333"/><rect x="160" y="50" width="30" height="10" fill="%23999"/></svg>') no-repeat center;
+    background-size: contain;
+    transition: transform 0.1s linear;
+}
+
+/* Навигация */
+.space-nav {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid var(--border-glow);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.space-nav ul {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.space-nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.space-nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.2), transparent);
+    transition: left 0.3s ease;
+}
+
+.space-nav a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.space-nav a:hover::before {
+    left: 100%;
+}
+
+/* Активная ссылка навигации */
+.nav-link {
+    position: relative;
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+}
+
+/* Основной контейнер */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ========== СТИЛИ ДЛЯ INDEX.HTML ========== */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Кнопки */
+.cosmic-btn {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    box-shadow: 0 0 20px var(--shadow-color);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cosmic-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.cosmic-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px var(--shadow-color);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cosmic-btn:hover::before {
+    left: 100%;
+}
+
+.cosmic-btn:active {
+    transform: translateY(0);
+}
+
+.login-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    box-shadow: 0 0 20px var(--shadow-color);
+}
+
+.register-btn {
+    background: linear-gradient(135deg, var(--success-color) 0%, var(--success-dark) 100%);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+}
+
+.register-btn:hover {
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.8);
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* Карточки работ */
+.job-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--border-glow);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2);
+}
+
+.job-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--text-light);
+    flex-wrap: wrap;
+}
+
+.mission-badge {
+    background: var(--primary-color);
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: none;
+}
+
+.job-status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 1rem;
+    animation: pulse 2s infinite;
+}
+
+[data-finished="true"] {
+    background: var(--success-color);
+    box-shadow: 0 0 10px var(--success-color);
+}
+
+[data-finished="false"] {
+    background: var(--warning-color);
+    box-shadow: 0 0 10px var(--warning-color);
+}
+
+/* Таблица работ */
+.table_container {
+    background: transparent;
+    border-radius: 20px;
+    overflow-x: auto;
+}
+
+.job_table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.job_table th {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.job_table th:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.job_table th:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.job_table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.data-row {
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease forwards;
+}
+
+.data-row:hover {
+    background: rgba(255, 107, 53, 0.1);
+}
+
+.leader-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.leader-icon {
+    font-size: 1.2rem;
+}
+
+.duration {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.duration-icon {
+    font-size: 1.2rem;
+}
+
+.collaborators {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.collab-badge {
+    background: rgba(255, 107, 53, 0.2);
+    border: 1px solid var(--primary-color);
+    padding: 0.2rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+.no-collab {
+    color: var(--text-gray);
+    font-style: italic;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.status-badge.finished {
+    background: rgba(76, 175, 80, 0.2);
+    border: 1px solid var(--success-color);
+    color: var(--success-color);
+}
+
+.status-badge.in-progress {
+    background: rgba(255, 193, 7, 0.2);
+    border: 1px solid var(--warning-color);
+    color: var(--warning-color);
+}
+
+/* Прогресс бар миссии */
+.mission-progress {
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+.progress-bar {
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b35, #ffd700);
+    border-radius: 5px;
+    transition: width 2s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+.progress-text {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* Фильтры миссий */
+.mission-filters {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 107, 53, 0.1);
+    border: 2px solid var(--border-glow);
+    border-radius: 50px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 700;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px var(--shadow-color);
+}
+
+/* Состояние пустого списка */
+.no-jobs {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--border-glow);
+    border-radius: 30px;
+}
+
+.mars-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.no-jobs h3 {
+    font-size: 2rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.no-jobs p {
+    color: var(--text-gray);
+    margin-bottom: 2rem;
+}
+
+/* Информационные карточки */
+.mission-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.info-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--border-glow);
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+}
+
+.info-icon {
+    font-size: 2.5rem;
+}
+
+.info-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    color: var(--text-light);
+}
+
+.info-content p {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+}
+
+/* ========== СТИЛИ ДЛЯ LOGIN.HTML ========== */
+.auth-container {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.auth-card {
+    max-width: 500px;
+    width: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--border-glow);
+    border-radius: 30px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 87, 34, 0.2) inset;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--shadow-color);
+}
+
+.auth-subtitle {
+    color: var(--text-gray);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.mars-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.mars-divider .line {
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+.planet-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px var(--primary-color));
+}
+
+/* ========== СТИЛИ ДЛЯ REGISTER.HTML ========== */
+.register-card {
+    max-width: 800px;
+    width: 100%;
+}
+
+.register-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 107, 53, 0.1), transparent 50%);
+    animation: rotateSlow 30s linear infinite;
+    z-index: -1;
+}
+
+.register-form {
+    gap: 2rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.form-group.half {
+    flex: 1;
+    min-width: 0;
+}
+
+.form-section {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--border-glow);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 0.5rem 0;
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.2);
+}
+
+.form-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border-glow);
+    padding-bottom: 0.5rem;
+}
+
+.section-icon {
+    font-size: 1.5rem;
+}
+
+.terms-group {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255, 107, 53, 0.1);
+    border-radius: 15px;
+}
+
+/* Индикатор сложности пароля */
+.password-strength {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    display: none;
+}
+
+.strength-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.3rem;
+}
+
+.strength-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff4444, #ffd700, #4CAF50);
+    transition: width 0.3s ease;
+    border-radius: 3px;
+}
+
+.strength-text {
+    font-size: 0.8rem;
+    color: var(--text-gray);
+}
+
+/* Кнопка регистрации */
+.register-submit {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+    font-size: 1.3rem;
+    padding: 1.2rem;
+}
+
+.register-submit:hover {
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.8);
+}
+
+/* ========== ОБЩИЕ СТИЛИ ФОРМ ========== */
+.cosmic-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    color: var(--text-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-left: 0.5rem;
+}
+
+.form-label::after {
+    content: ' *';
+    color: var(--primary-color);
+    opacity: 0.7;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+.cosmic-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--border-glow);
+    border-radius: 50px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px var(--shadow-color);
+}
+
+.cosmic-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 30px var(--shadow-color);
+    background: rgba(0, 0, 0, 0.7);
+    transform: scale(1.02);
+}
+
+.cosmic-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+}
+
+.cosmic-input:valid {
+    border-color: rgba(76, 175, 80, 0.5);
+}
+
+.cosmic-input:invalid:not(:placeholder-shown) {
+    border-color: rgba(255, 68, 68, 0.5);
+}
+
+/* Стили для числового поля age */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Чекбокс */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.cosmic-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+    position: relative;
+    padding-left: 30px;
+}
+
+.cosmic-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.cosmic-checkbox:hover input ~ .checkmark {
+    background: rgba(255, 107, 53, 0.2);
+}
+
+.cosmic-checkbox input:checked ~ .checkmark {
+    background: var(--primary-color);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.cosmic-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.cosmic-checkbox .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-text {
+    margin-left: 0.5rem;
+}
+
+.forgot-link {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    border-bottom: 1px dashed transparent;
+}
+
+.forgot-link:hover {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* Сообщения */
+.cosmic-alert {
+    padding: 0.8rem;
+    background: rgba(255, 0, 0, 0.2);
+    border: 2px solid var(--danger-color);
+    border-radius: 10px;
+    color: #ff8888;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    animation: shake 0.5s ease;
+}
+
+.alert-icon {
+    font-size: 1.2rem;
+}
+
+.cosmic-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 2px solid;
+}
+
+.cosmic-message.success {
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.cosmic-message.error {
+    border-color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+}
+
+.message-icon {
+    font-size: 1.5rem;
+}
+
+.message-text {
+    color: white;
+    font-size: 1rem;
+}
+
+/* Футер авторизации */
+.auth-footer {
+    margin-top: 2rem;
+    text-align: center;
+    color: var(--text-gray);
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.auth-footer a:hover {
+    border-bottom-color: var(--primary-color);
+    text-shadow: 0 0 10px var(--shadow-color);
+}
+
+.mars-rover-small {
+    width: 50px;
+    height: 30px;
+    margin: 1rem auto;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><circle cx="20" cy="30" r="10" fill="%23ff6b35"/><circle cx="40" cy="30" r="10" fill="%23ff6b35"/><rect x="50" y="20" width="30" height="20" fill="%23ff6b35" rx="5"/><circle cx="65" cy="40" r="5" fill="%23333"/></svg>') no-repeat center;
+    background-size: contain;
+    opacity: 0.7;
+}
+
+/* Подвал */
+.space-footer {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-top: 3px solid var(--primary-color);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.space-footer p {
+    color: var(--text-gray);
+    margin: 0.5rem 0;
+}
+
+.space-footer .small {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.footer-links {
+    margin-top: 1rem;
+}
+
+.footer-link {
+    color: var(--text-gray);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.3rem 0.8rem;
+}
+
+.footer-link:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--shadow-color);
+}
+
+.footer-separator {
+    color: var(--text-gray);
+    opacity: 0.3;
+}
+
+/* Стили для автозаполнения */
+.cosmic-input:-webkit-autofill,
+.cosmic-input:-webkit-autofill:hover,
+.cosmic-input:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.8) inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Ripple эффект */
+.ripple {
+    position: absolute;
+    background: rgba(255, 107, 53, 0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* Частицы */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* ========== АНИМАЦИИ ========== */
+@keyframes twinkle {
+    0%, 100% { opacity: 0.8; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-20px, -20px); }
+}
+
+@keyframes glitch {
+    0%, 100% { transform: skew(0deg); }
+    95% { transform: skew(2deg); }
+    96% { transform: skew(-2deg); }
+    97% { transform: skew(1deg); }
+    98% { transform: skew(-1deg); }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+        box-shadow: 0 0 10px currentColor;
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+        box-shadow: 0 0 20px currentColor;
+    }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-5px); }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes meteorFall {
+    0% {
+        transform: translate(0, 0) rotate(45deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100vw, 100vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes particle {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(-50% + var(--vx) * 20px), calc(-50% + var(--vy) * 20px)) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ========== СКРОЛЛБАР ========== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 1024px) {
+    .glitch {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .glitch {
+        font-size: 1.
