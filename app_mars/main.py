@@ -5,8 +5,12 @@ from data.jobs import Jobs
 from data.users import User
 from data.log import Login_form
 from data.register import Registr_form
+from flask_restful import Api, abort, Resource, reqparse
+import users_resource
+
 
 app = Flask(__name__)
+api = Api(app)
 app.config['SECRET_KEY'] = 'my_secret_key'
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -15,6 +19,8 @@ login_manager.init_app(app)
 def main():
     db_session.global_init("db/mars.db")
     app.register_blueprint(jobs_api.blueprint)
+    api.add_resource(users_resource.UsersListResource, '/api/v2/users')
+    api.add_resource(users_resource.UsersResource, '/api/v2/users/<user_id>')
     app.run()
 
 @app.route('/')
